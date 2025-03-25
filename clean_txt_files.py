@@ -3,51 +3,56 @@
 
 """
 ========================================================
-图片描述文件清除工具
+图片描述文件清除工具 / Image Description File Cleaner
 ========================================================
 
-【功能说明】
+【功能说明 / Function Description】
 这个程序用于清除由图片描述生成工具创建的文本文件(.txt)。
 当你需要重新生成图片描述，或者想清除旧的描述文件时，
 可以使用此工具来批量删除文本文件。
 
-【使用方法】
-1. 设置下方的全局变量:
-   - TARGET_FOLDER: 要清除的单个文件夹名称（如"厨房"）
-   - CLEAN_ALL_FOLDERS: 控制清除模式
-     - 0: 只清除TARGET_FOLDER指定的文件夹中的文件
-     - 1: 清除所有文件夹中的文件
+This program is used to remove text files (.txt) created by the image description generation tool.
+When you need to regenerate image descriptions or clear old description files,
+you can use this tool to batch delete text files.
 
-2. 运行程序: python clean_txt_files.py
+【使用方法 / Usage】
+1. 设置下方的全局变量 / Set the global variables below:
+   - TARGET_FOLDER: 要清除的单个文件夹名称（如"厨房"）/ Name of a single folder to clean (e.g., "Kitchen")
+   - CLEAN_ALL_FOLDERS: 控制清除模式 / Control cleaning mode
+     - 0: 只清除TARGET_FOLDER指定的文件夹中的文件 / Only clean files in the folder specified by TARGET_FOLDER
+     - 1: 清除所有文件夹中的文件 / Clean files in all folders
+
+2. 运行程序 / Run the program: python clean_txt_files.py
 
 3. 程序会询问确认，输入'y'确认删除，输入其他取消操作
+   The program will ask for confirmation, enter 'y' to confirm deletion, enter anything else to cancel
 
-4. 程序将:
-   - 删除指定文件夹中的所有.txt文件
-   - 删除进度记录文件，使得下次运行描述生成工具时重新开始
+4. 程序将 / The program will:
+   - 删除指定文件夹中的所有.txt文件 / Delete all .txt files in the specified folders
+   - 删除进度记录文件，使得下次运行描述生成工具时重新开始 / Delete progress record files to restart from the beginning next time
 
-【文件夹结构】
-程序会处理以下结构中的文件:
+【文件夹结构 / Folder Structure】
+程序会处理以下结构中的文件 / The program processes files in the following structure:
 picture/
-  ├── 厨房/
-  │   ├── 任意图片.png
-  │   ├── 任意图片.txt  (将被删除)
+  ├── 厨房/Kitchen/
+  │   ├── 任意图片.png / Any image.png
+  │   ├── 任意图片.txt (将被删除) / Any image.txt (will be deleted)
   │   └── ...
-  ├── 客厅/
-  │   ├── 图片.png
-  │   ├── 图片.txt  (将被删除)
+  ├── 客厅/Living Room/
+  │   ├── 图片.png / Image.png
+  │   ├── 图片.txt (将被删除) / Image.txt (will be deleted)
   │   └── ...
   └── ...
 
-【安全措施】
-- 程序只会删除.txt文件，不会删除图片文件
-- 执行前会要求确认，避免意外操作
-- 会显示删除的文件列表，便于确认
+【安全措施 / Safety Measures】
+- 程序只会删除.txt文件，不会删除图片文件 / The program only deletes .txt files, not image files
+- 执行前会要求确认，避免意外操作 / Confirmation is required before execution to avoid accidental operations
+- 会显示删除的文件列表，便于确认 / The list of deleted files will be displayed for confirmation
 
-【注意事项】
-- 删除操作不可撤销，请谨慎确认
-- 如果指定的文件夹不存在，程序会提示错误
-- 可以反复运行此程序，不会有副作用
+【注意事项 / Notes】
+- 删除操作不可撤销，请谨慎确认 / Deletion operations cannot be undone, please confirm carefully
+- 如果指定的文件夹不存在，程序会提示错误 / If the specified folder does not exist, the program will display an error
+- 可以反复运行此程序，不会有副作用 / This program can be run repeatedly without side effects
 """
 
 import os

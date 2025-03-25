@@ -3,42 +3,47 @@
 
 """
 ========================================================
-图片自动描述生成工具
+图片自动描述生成工具 / Automatic Image Description Generator
 ========================================================
 
-【功能说明】
+【功能说明 / Function Description】
 这个程序可以自动为图片生成文字描述，特别适合建筑空间图片的描述。
 程序会读取指定文件夹中的图片，通过人工智能识别图片内容，
 然后生成英文描述，并保存为同名的文本文件。
 
-【使用方法】
-1. 设置下方的全局变量:
-   - CURRENT_FOLDER: 要处理的单个文件夹名称（如"厨房"）
-   - PROCESS_ALL_FOLDERS: 是否处理所有文件夹
-     - True: 处理所有文件夹
-     - False: 只处理CURRENT_FOLDER指定的文件夹
+This program automatically generates text descriptions for images, particularly 
+suitable for architectural space images. It reads images from specified folders, 
+recognizes the image content through artificial intelligence, then generates 
+English descriptions and saves them as text files with the same name.
 
-2. 运行程序: python generate_picture_describe.py
+【使用方法 / Usage】
+1. 设置下方的全局变量 / Set the global variables below:
+   - CURRENT_FOLDER: 要处理的单个文件夹名称（如"厨房"）/ Name of a single folder to process (e.g., "Kitchen")
+   - PROCESS_ALL_FOLDERS: 是否处理所有文件夹 / Whether to process all folders
+     - True: 处理所有文件夹 / Process all folders
+     - False: 只处理CURRENT_FOLDER指定的文件夹 / Only process the folder specified by CURRENT_FOLDER
 
-3. 程序将:
-   - 读取图片文件夹中的.png图片（按文件名排序）
-   - 调用讯飞星火API识别图片内容
-   - 生成对应的英文描述，保存为同名的.txt文件（如1.txt, 2.txt）
-   - 处理过程会显示在屏幕上
+2. 运行程序 / Run the program: python generate_picture_describe.py
 
-【文件夹结构】
-图片应按以下结构放置:
+3. 程序将 / The program will:
+   - 读取图片文件夹中的图片（按文件名排序）/ Read images from the folder (sorted by filename)
+   - 调用讯飞星火API识别图片内容 / Call Xunfei Spark API to recognize image content
+   - 生成对应的英文描述，保存为同名的.txt文件 / Generate corresponding English descriptions and save as .txt files
+   - 处理过程会显示在屏幕上 / The processing progress will be displayed on screen
+
+【文件夹结构 / Folder Structure】
+图片应按以下结构放置 / Images should be placed in the following structure:
 picture/
-  ├── 厨房/
+  ├── 厨房/Kitchen/
   │   ├── 1.png
   │   ├── 2.png
   │   └── ...
-  ├── 客厅/
+  ├── 客厅/Living Room/
   │   ├── 1.png
   │   └── ...
   └── ...
 
-【文件命名建议】
+【文件命名建议 / File Naming Suggestions】
 程序支持任意文件名的PNG、WEBP、JPEG、JPG图片（如"12315123.png"或"safafaf.png"）
 文件名排序规则：
   • 如果所有文件都是纯数字命名，则按照数值从小到大排序（例如：1, 2, 10, 100）；
@@ -46,14 +51,24 @@ picture/
 为了确保按顺序处理，建议使用纯数字命名（如1.png, 2.png, 3.png）
 程序会自动检测文件命名情况并给出相应提示
 
-【断点续传】
+The program supports any filename for PNG, WEBP, JPEG, JPG images (such as "12315123.png" or "safafaf.png")
+File name sorting rules:
+  • If all files have pure numeric names, they are sorted by numerical value (e.g., 1, 2, 10, 100);
+  • If non-numeric names exist, pure numeric filenames are prioritized and sorted by value first, followed by non-numeric filenames sorted alphabetically (e.g., 1, 2, 3, a, b, c).
+For consistent processing order, it's recommended to use pure numeric naming (like 1.png, 2.png, 3.png)
+The program will automatically detect file naming patterns and provide appropriate prompts
+
+【断点续传 / Resume Function】
 如果程序中断，再次运行时会自动从上次处理的地方继续，
 不会重复处理已经生成描述的图片。
 
-【注意事项】
-- 图片文件必须是.png格式
-- 图片文件可以是任意名称，会按照名称排序处理
-- 需要连接网络访问星火AI服务
+If the program is interrupted, it will automatically continue from where it left off when run again,
+without reprocessing images that have already been described.
+
+【注意事项 / Notes】
+- 图片文件必须是支持的格式: PNG, WEBP, JPEG, JPG / Image files must be in supported formats
+- 图片文件可以是任意名称，会按照名称排序处理 / Image files can have any name and will be processed in order by name
+- 需要连接网络访问星火AI服务 / Internet connection is required to access the Xunfei Spark AI service
 """
 
 import _thread as thread

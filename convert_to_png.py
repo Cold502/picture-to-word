@@ -2,8 +2,50 @@
 # -*- coding: utf-8 -*-
 
 """
-图片格式转换工具 - 将picture目录中的所有图片转换为PNG格式
-Image Format Conversion Tool - Convert all images in the picture directory to PNG format
+========================================================
+图片格式转换工具 / Image Format Conversion Tool
+========================================================
+
+【功能说明 / Function Description】
+这个程序用于将picture目录中的所有图片转换为PNG格式。
+支持多种常见图片格式，如jpg、jpeg、webp、gif、bmp等，
+转换后会保留图片原有的透明通道（如果存在）。
+
+This program is used to convert all images in the picture directory to PNG format.
+It supports various common image formats such as jpg, jpeg, webp, gif, bmp, etc.,
+and preserves the original transparency channel of the image (if it exists) after conversion.
+
+【使用方法 / Usage】
+1. 直接运行程序: python convert_to_png.py
+   或指定目录: python convert_to_png.py [目标目录路径]
+
+   Run the program directly: python convert_to_png.py
+   Or specify a directory: python convert_to_png.py [target directory path]
+
+2. 程序将 / The program will:
+   - 遍历指定目录中的所有图片文件 / Traverse all image files in the specified directory
+   - 自动将其转换为PNG格式 / Automatically convert them to PNG format
+   - 删除原始文件（非PNG格式的文件） / Delete original files (non-PNG format files)
+   - 显示转换进度和结果统计 / Display conversion progress and result statistics
+
+【主要特点 / Main Features】
+- 多线程并行处理，加速转换过程 / Multi-threaded parallel processing to accelerate conversion
+- 支持递归处理子目录中的图片 / Support recursive processing of images in subdirectories
+- 智能保留透明通道 / Intelligently preserve transparency channels
+- 自动删除已转换的原始文件 / Automatically delete converted original files
+
+【支持的图片格式 / Supported Image Formats】
+- jpg, jpeg / JPEG format
+- webp / WebP format
+- gif / GIF format
+- bmp / BMP format
+- tiff, tif / TIFF format
+- png (已经是PNG格式的文件会被跳过) / PNG (files already in PNG format will be skipped)
+
+【注意事项 / Notes】
+- 请在执行前确保图片文件已备份 / Make sure image files are backed up before execution
+- 转换过程不可逆，原始文件（非PNG）将被删除 / The conversion is irreversible, original files (non-PNG) will be deleted
+- 需要安装PIL/Pillow库 / PIL/Pillow library needs to be installed
 """
 
 import os
